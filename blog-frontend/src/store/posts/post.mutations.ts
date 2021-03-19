@@ -13,7 +13,7 @@ export default {
     state.posts.map((post: any) => {
       post.comments.map((comment: any) => {
         if(comment.id === data.comment_id) {
-          comment.responses.push(data)
+          comment['responses'].push(data)
         }
       })
     })    

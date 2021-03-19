@@ -116,7 +116,9 @@ export default {
 
         Post.respondToComment(data).then(response => {
             this.$emit("responded", response.data)
-            alert('You\'ve responded to a comment!')
+            this.response = ''
+            this.closeModal()
+            alert('You\'ve responded to a comment!')            
         })
 
     },
