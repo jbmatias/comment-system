@@ -11,6 +11,8 @@ interface IPostService {
      * @param none
      */
 
-     public function get();    
+     public function get();
+     
+     public function saveName();
 
 }

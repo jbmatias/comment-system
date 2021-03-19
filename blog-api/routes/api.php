@@ -15,5 +15,6 @@ use App\Http\Controllers\Blog\PostController;
 */
 
 Route::namespace('Blog')->group(function () {
+    Route::post('/save/username', [PostController::class, 'saveName'])->name('login');
     Route::get('/posts', [PostController::class, 'getPost'])->name('login');    
 });

@@ -15,6 +15,10 @@ class PostService implements IPostService {
 
     public function get() {
         return response()->json($this->post->all());
-    }    
+    }
+    
+    public function saveName() {
+        
+    }
 
 }

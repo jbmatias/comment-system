@@ -1,0 +1,35 @@
+.profile {
+    margin-top: 50px;
+    * {
+        font-family: Open Sans,sans-serif;             
+        color: #32325d;
+    }
+    label[for="fullname"] {
+        font-size: 12px;
+        font-weight: 300;
+        text-align: left;
+    }
+    .form-control {
+        &.fullname {
+            text-transform: capitalize;
+            font-size: 50px;
+            height: 80px;
+            text-align: center;
+        }
+    }
+    .form-text {
+        &.text-muted {
+            font-size: 12px;
+            font-weight: 300;
+            text-align: left; 
+        }
+    }
+
+    button[type=submit] {
+        background-color: #5e72e4 !important;
+        color: #fff;
+        border-radius: 5px;  
+        padding: 10px 30px;
+        float: right;
+    }
+}
