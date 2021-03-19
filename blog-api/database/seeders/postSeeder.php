@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\CommentResponse;
 
 class postSeeder extends Seeder
 {
@@ -24,5 +25,8 @@ class postSeeder extends Seeder
 
         $comment = new Comment();
         $comment->truncate();
+
+        $response = new CommentResponse();
+        $response->truncate();
     }
 }

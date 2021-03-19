@@ -41,7 +41,7 @@ class PostService implements IPostService {
                 'comment' => $comment
             ]);
     
-            return $this->comment->where('id',$comment->id)->where('username_id', $username_id)->with('username')->first();
+            return $this->comment->where('id',$comment->id)->where('username_id', $username_id)->with('username', 'responses')->first();
         }        
 
         return response()->json(['error' => 'Post has already reached 3 comments now!'], 404);
