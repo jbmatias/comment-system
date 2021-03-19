@@ -5,6 +5,7 @@ div[id="app"]{
             border-radius: 5px;                        
             @import './navigation-bar';
             @import './profile.scss';
+            @import './news-feed.scss'
         }            
     }    
 }

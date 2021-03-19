@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Post;
+use App\Models\Comment;
 
 class postSeeder extends Seeder
 {
@@ -20,5 +21,8 @@ class postSeeder extends Seeder
             'name' => 'John Snow',
             'post' => 'Personal profiles are the perfect way for you to grab their attention and persuade recruiters to continue reading your CV because you’re telling them from the off exactly why they should hire you.'
         ]);
+
+        $comment = new Comment();
+        $comment->truncate();
     }
 }

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Profile from '../views/Profile.vue'
+import NewsFeed from '../views/NewsFeed.vue'
 
 Vue.use(VueRouter)
 
@@ -13,7 +14,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/newsfeed',
     name: 'newsfeed',
-    component: Profile
+    component: NewsFeed
   }  
 ]
 

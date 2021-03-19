@@ -15,6 +15,8 @@ use App\Http\Controllers\Blog\PostController;
 */
 
 Route::namespace('Blog')->group(function () {
-    Route::post('/save/username', [PostController::class, 'saveName'])->name('login');
-    Route::get('/posts', [PostController::class, 'getPost'])->name('login');    
+    Route::post('/save/username', [PostController::class, 'saveName']);
+    Route::get('/posts', [PostController::class, 'getPost']);
+    Route::post('/posts/{id}/comment', [PostController::class, 'postComment']);
+    Route::post('/posts/comment/respond', [PostController::class, 'respondToComment']);
 });

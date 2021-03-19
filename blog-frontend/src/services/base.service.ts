@@ -1,13 +1,16 @@
 
 import store from '@/store'
-import Headers from '@/interfaces/headers'
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-let baseService = class BaseService {
 
-    baseURL: any = 'http://127.0.0.1:8000'
+interface Headers {
+    [x: string]: string | number
+}
+
+let baseService = class BaseService {    
+    baseURL: any = process.env.VUE_APP_BASE_URL
     headers: object = Headers
     $http: AxiosInstance    
-    constructor() {
+    constructor() {        
 
         this.headers = {
             'Content-Type': 'application/json',        

@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VuexPersist from 'vuex-persist'
 import post from './posts'
-import VuexPersist from 'vuex-persist';
+import user from './user'
 
 Vue.use(Vuex)
 
@@ -12,7 +13,8 @@ const vuexPersist = new VuexPersist({
 
 export default new Vuex.Store({
   modules: {
-    post,    
+    post,
+    user
   },
   plugins: [vuexPersist.plugin]
 });

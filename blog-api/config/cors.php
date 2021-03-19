@@ -29,6 +29,8 @@ return [
 
     'max_age' => 0,
 
+    'paths' => ['api/*'],
+    
     'supports_credentials' => false,
 
 ];

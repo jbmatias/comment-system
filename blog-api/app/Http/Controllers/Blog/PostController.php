@@ -38,12 +38,36 @@ class PostController extends BaseController
         ]);
         
         if($validator->fails()) {
-            return $validator->errors();
+            return response()->json($validator->errors(), 400);
         }
 
-        $this->memberService->save($request);
+        return $this->memberService->save($request);        
+    }
 
-        return response()->json(['message' => 'username successfully saved!']);
+    public function postComment($id, Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'comment' => 'required|string|min:1',            
+            'username_id' => 'required'
+        ]);
+        
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        return $this->postService->postComment($id, $request->comment, $request->username_id);        
+    }
+
+    public function respondToComment(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'response' => 'required|string|min:1',                        
+        ]);
+
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        return $this->postService->respondToComment($request);        
     }
 
 }

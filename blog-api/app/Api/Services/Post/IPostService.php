@@ -13,6 +13,8 @@ interface IPostService {
 
      public function get();
      
-     public function saveName();
+     public function postComment($id, $comment, $username_id);
+
+     public function respondToComment($request);
 
 }
