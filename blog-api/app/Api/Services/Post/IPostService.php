@@ -11,10 +11,22 @@ interface IPostService {
      * @param none
      */
 
-     public function get();
-     
-     public function postComment($id, $comment, $username_id);
+    public function get();
+    
+     /**
+     * Comment to a Post
+     * @param $id
+     * @param $comment
+     * @param $username_id
+     */
 
-     public function respondToComment($request);
+    public function postComment($id, $comment, $username_id);
+
+    /**
+     * respond to a Comment
+     * @param $request     
+     */
+
+    public function respondToComment($request);
 
 }

@@ -19,6 +19,12 @@ class PostController extends BaseController
     public $postService;
     public $memberService;
 
+    /**
+     * initialize all service containers and interfaces
+     * check App\Providers\AppServiceProvider to see the bindings
+     * @var $postService
+     * @var $memberService
+     */
     public function __construct(
         IPostService $postService,
         IMemberService $memberService)
@@ -27,10 +33,18 @@ class PostController extends BaseController
         $this->memberService = $memberService;
     }
     
+    /**
+     * return Post data
+     * @param null
+     */
     public function getPost() {
         return response()->json($this->postService->get());
     }
 
+    /**
+     * save username
+     * @param $request
+     */
     public function saveName(Request $request) {
         
         $validator = Validator::make($request->all(), [
@@ -44,8 +58,14 @@ class PostController extends BaseController
         return $this->memberService->save($request);        
     }
 
-    public function postComment($id, Request $request) {
+    /**
+     * post comment
+     * @param $id
+     * @param $request
+     */
 
+    public function postComment($id, Request $request) {
+        
         $validator = Validator::make($request->all(), [
             'comment' => 'required|string|min:1',            
             'username_id' => 'required'
@@ -58,6 +78,10 @@ class PostController extends BaseController
         return $this->postService->postComment($id, $request->comment, $request->username_id);        
     }
 
+    /**
+     * respond to a cooment
+     * @param $request
+     */
     public function respondToComment(Request $request) {
         $validator = Validator::make($request->all(), [
             'response' => 'required|string|min:1',                        
