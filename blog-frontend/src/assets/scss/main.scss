@@ -1,0 +1,11 @@
+div[id="app"]{    
+    .container {
+        .main-card{            
+            border: 0;
+            border-radius: 5px;                        
+            @import './navigation-bar';
+            @import './profile.scss';
+            @import './news-feed.scss'
+        }            
+    }    
+}
