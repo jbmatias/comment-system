@@ -16,11 +16,3 @@ use App\Http\Controllers\Blog\PostController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::group([
-    'middleware' => ['cors'],
-    'namespace' => 'Blog',    
-], function ($router) {
-    Route::post('/save/username', [PostController::class, 'saveName'])->name('login');
-    Route::get('/posts', [PostController::class, 'getPost'])->name('login');    
-});

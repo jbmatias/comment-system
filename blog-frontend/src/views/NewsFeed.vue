@@ -73,7 +73,7 @@
               </div>
             </div>
 
-            <div class="mb-1">
+            <div class="mb-1 mt-2">
               <div
                 class="media media media-comment"
                 v-for="(response, index) in comment.responses"
