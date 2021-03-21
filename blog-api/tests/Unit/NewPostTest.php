@@ -26,19 +26,14 @@ class NewPostTest extends TestCase
         $this->post = new Post();
         $this->username = new Username();        
 
-        $response = $this->call('GET', '/api/posts')
-            ->assertStatus(200);        
+        $response = $this->call('GET', '/api/posts')->assertStatus(200);        
         info($response->baseResponse);
         
-        $post = $this->post->first();
-        $username = $this->username->create([
-            'name' => 'Abigail Otwell'
-        ]);
-        
+        $post = $this->post->first();                
         if($post) {
+            $username = $this->username->create(['name' => 'Abigail Otwell']);
             $request = ['comment' => 'This is a test comment', 'username_id' => $username->id];            
-            $response = $this->call('POST', 'api/posts/'. $post->id .'/comment', $request)
-                ->assertStatus(200);  
+            $response = $this->call('POST', 'api/posts/'. $post->id .'/comment', $request)->assertStatus(200);  
             info($response->baseResponse);                   
         }        
     }
