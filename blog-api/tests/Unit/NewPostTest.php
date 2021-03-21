@@ -24,8 +24,7 @@ class NewPostTest extends TestCase
         Artisan::call('db:seed', ['--class' => 'postSeeder', '--database' => 'mysql']);
 
         $this->post = new Post();
-        $this->username = new Username();
-        $this->factory = new UserFactory();
+        $this->username = new Username();        
 
         $response = $this->call('GET', '/api/posts')
             ->assertStatus(200);        
