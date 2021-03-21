@@ -8,19 +8,32 @@ use App\Models\CommentResponse;
 
 class PostService implements IPostService {
     
+    /**
+     * initialize class properties
+     * @var $post
+     * @var $comment
+     * @var $response
+     */
+
     private $post;
     private $comment;
     private $response;
 
+    
     public function __construct(
         Post $post,
         Comment $comment,
         CommentResponse $response)
-    {
+    {        
         $this->post = $post;
         $this->comment = $comment;
         $this->response = $response;
     }
+
+    /**
+     * return Post with Comments and Comments responses
+     * @param null
+     */
 
     public function get() {
         return response()->json($this->post->with(['comments' => function($q) {
@@ -30,6 +43,12 @@ class PostService implements IPostService {
         }])->get());
     }
     
+    /**
+     * save Comment if Post has less than 3 Comments
+     * @param $id
+     * @param $comment
+     * @param $username_id
+     */
     public function postComment($id, $comment, $username_id) {
 
         $post = $this->post->find($id)->with('comments')->first();
@@ -50,6 +69,10 @@ class PostService implements IPostService {
         return response()->json(['error' => 'Post has already reached 3 comments now!'], 404);
     }
 
+    /**
+     * respond to a comment
+     * @param $request
+     */
     public function respondToComment($request) {
         $response = $this->response->create([
             'comment_id' => $request->comment_id,
