@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use Database\Factories\UserFactory;
 use App\Models\Post;
 use App\Models\Username;
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class NewPostTest extends TestCase
@@ -20,12 +21,14 @@ class NewPostTest extends TestCase
 
     public function test_post_and_post_comment()
     {   
-        $this->post = new Post();
-        $this->username = new Username();
-        $this->factory = new UserFactory();
+        Artisan::call('db:seed', ['--class' => 'postSeeder', '--database' => 'mysql']);
 
-        $this->call('GET', '/api/posts')
-            ->assertStatus(200);
+        $this->post = new Post();
+        $this->username = new Username();        
+
+        $response = $this->call('GET', '/api/posts')
+            ->assertStatus(200);        
+        info($response->baseResponse);
         
         $post = $this->post->first();
         $username = $this->username->create([
@@ -34,8 +37,9 @@ class NewPostTest extends TestCase
         
         if($post) {
             $request = ['comment' => 'This is a test comment', 'username_id' => $username->id];            
-            $this->call('POST', 'api/posts/'. $post->id .'/comment', $request)
-                ->assertStatus(200);                     
+            $response = $this->call('POST', 'api/posts/'. $post->id .'/comment', $request)
+                ->assertStatus(200);  
+            info($response->baseResponse);                   
         }        
     }
 }
